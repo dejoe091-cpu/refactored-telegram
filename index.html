@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070b16">
+<title>GameZone — Play. Compete. Win.</title>
+<meta name="description" content="Discover action, racing, sports, puzzle, adventure and arcade games on GameZone.">
+<style>
+:root{--bg:#070b16;--panel:#111a2b;--text:#f5f7ff;--muted:#aab4c8;--lime:#b7ff4a;--cyan:#55e7ff;--line:#26344d}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#193b4a 0,transparent 34%),radial-gradient(ellipse at 0% 30%,#17163b 0,transparent 30%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+a{color:inherit;text-decoration:none}.wrap{width:min(1120px,92%);margin:auto}
+header{position:sticky;top:0;z-index:10;background:#070b16eF;backdrop-filter:blur(16px);border-bottom:1px solid #ffffff12}
+nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-weight:1000;font-size:1.5rem;letter-spacing:-1.3px}.logo span{color:var(--lime);text-shadow:0 0 20px #b7ff4a66}
+.links{display:flex;gap:22px;color:var(--muted);font-size:.92rem}.links a:hover{color:var(--lime)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 18px;border-radius:12px;background:linear-gradient(110deg,var(--lime),#e3ff83);color:#10170b;font-weight:900;box-shadow:0 8px 26px #b7ff4a25;border:0;cursor:pointer}
+.hero{padding:68px 0 50px;display:grid;grid-template-columns:1.02fr .98fr;gap:34px;align-items:center}
+.kicker{display:inline-flex;gap:8px;align-items:center;color:var(--lime);font-size:.76rem;font-weight:900;letter-spacing:2px;text-transform:uppercase}
+.kicker:before{content:"";width:24px;height:2px;background:var(--lime);box-shadow:0 0 12px var(--lime)}
+h1{font-size:clamp(2.8rem,6.4vw,5.5rem);line-height:.98;letter-spacing:-4px;margin:17px 0 18px;font-weight:1000}
+h1 span{background:linear-gradient(90deg,var(--lime),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--muted);font-size:1.07rem;line-height:1.75;max-width:560px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
+.ghost{border:1px solid #ffffff25;border-radius:12px;padding:12px 17px;font-weight:800;background:#ffffff08}
+.hero-visual{position:relative;min-height:370px;border-radius:28px;overflow:hidden;border:1px solid #ffffff20;background:linear-gradient(145deg,#162c47,#182044 50%,#102d36);box-shadow:0 25px 70px #0008}
+.hero-visual:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 48%,#55e7ff33,transparent 38%),linear-gradient(130deg,transparent 30%,#b7ff4a12 70%)}
+.hero-visual svg{position:absolute;width:100%;height:100%;inset:0}
+.float-chip{position:absolute;padding:10px 14px;border:1px solid #ffffff30;background:#091321c9;backdrop-filter:blur(12px);border-radius:13px;font-size:.82rem;font-weight:800;box-shadow:0 10px 30px #0006}
+.chip-one{top:22px;left:20px}.chip-two{bottom:22px;right:18px}
+.section{padding:38px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:22px}
+h2{font-size:1.85rem;letter-spacing:-.8px;margin:0}.sub{color:var(--muted);margin:7px 0 0}
+.game-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.game-card{background:linear-gradient(160deg,#151f34,#0e1626);border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:transform .22s,border-color .22s,box-shadow .22s}
+.game-card:hover{transform:translateY(-6px);border-color:#8ccf59;box-shadow:0 18px 35px #0006}
+.art{height:170px;position:relative;overflow:hidden;background:#15213a}.art svg{width:100%;height:100%;display:block}
+.art:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#0e1626 0%,transparent 52%)}
+.card-body{padding:17px 18px 19px}.tag{display:inline-block;color:var(--lime);font-size:.69rem;letter-spacing:1.3px;font-weight:900}
+.card-body h3{font-size:1.18rem;margin:8px 0 6px}.card-body p{font-size:.9rem;line-height:1.55;color:var(--muted);margin:0}
+.card-foot{display:flex;justify-content:space-between;align-items:center;margin-top:16px}.play-link{color:var(--lime);font-weight:900;font-size:.9rem}
+.rating{color:#ffd66b;font-size:.8rem}
+.ad{border:1px dashed #465773;border-radius:15px;padding:20px;text-align:center;color:#8492a9;background:#ffffff04;margin:14px 0}
+.panel{border:1px solid #ffffff18;background:linear-gradient(135deg,#17243a,#101829);border-radius:23px;padding:24px;box-shadow:0 18px 50px #0004}
+.mini-wrap{max-width:520px;margin:20px auto 0;text-align:center;padding:22px;border-radius:18px;background:#070d19;border:1px solid #ffffff16}
+#score{font-size:2.8rem;font-weight:1000;color:var(--lime);margin:8px}
+#tapButton{width:148px;height:148px;border-radius:50%;border:8px solid #e6ffc6;background:radial-gradient(circle at 35% 25%,#eaffbd,var(--lime) 55%,#72bd28);color:#10170b;font-size:1.2rem;font-weight:1000;box-shadow:0 0 0 12px #b7ff4a12,0 0 45px #b7ff4a55;cursor:pointer}
+#tapButton:active{transform:scale(.95)}#tapButton:disabled{opacity:.55;cursor:not-allowed}
+.small{font-size:.87rem;color:var(--muted);line-height:1.6}
+footer{margin-top:40px;padding:28px 0;border-top:1px solid #ffffff16;color:var(--muted);font-size:.9rem}
+@media(max-width:760px){.hero{grid-template-columns:1fr;padding-top:48px}.hero-visual{min-height:280px}.game-grid{grid-template-columns:repeat(2,1fr)}.links{gap:12px;font-size:.82rem}}
+@media(max-width:520px){.game-grid{grid-template-columns:1fr}.art{height:190px}.links{gap:9px;font-size:.76rem}.hide-small{display:none}h1{letter-spacing:-2.5px}.hero{gap:25px}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><nav>
+<a class="logo" href="#">GAME<span>ZONE</span></a>
+<div class="links"><a href="#games">Games</a><a href="#tapgame">Play</a><a href="#about">About</a></div>
+<a class="btn" href="#games">Explore games ↗</a>
+</nav></div></header>
+
+<main class="wrap">
+<section class="hero">
+<div>
+<div class="kicker">Level up your free time</div>
+<h1>YOUR NEXT<br><span>ADVENTURE</span><br>STARTS HERE.</h1>
+<p class="lead">Enter GameZone — discover exciting game worlds, test your skills and find your next favourite challenge. One destination. Every kind of gamer.</p>
+<div class="hero-actions"><a class="btn" href="#games">Explore games <span>→</span></a><a class="ghost" href="#tapgame">Play free demo</a></div>
+</div>
+<div class="hero-visual">
+<svg viewBox="0 0 600 420" role="img" aria-label="Neon illustrated game controller with glowing shapes">
+<defs>
+ <linearGradient id="body" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f7fbff"/><stop offset=".48" stop-color="#9daec8"/><stop offset="1" stop-color="#435674"/></linearGradient>
+ <linearGradient id="glow" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b7ff4a"/><stop offset="1" stop-color="#55e7ff"/></linearGradient>
+ <filter id="shadow"><feGaussianBlur stdDeviation="12"/></filter>
+</defs>
+<circle cx="300" cy="205" r="150" fill="#55e7ff" opacity=".12" filter="url(#shadow)"/>
+<path d="M118 95 L165 50 M482 100 L530 55 M105 325 L155 365 M475 335 L525 375" stroke="#b7ff4a" stroke-width="3" opacity=".45"/>
+<circle cx="300" cy="210" r="155" fill="none" stroke="#b7ff4a" opacity=".22" stroke-width="2" stroke-dasharray="5 12"/>
+<g transform="translate(70 95) rotate(-8 230 120)">
+<path d="M112 80 Q130 38 178 42 L286 42 Q335 38 355 80 L405 180 Q425 225 390 250 Q355 273 327 237 L294 200 L169 200 L136 237 Q105 273 72 250 Q38 225 58 180 Z" fill="#55e7ff" opacity=".22" transform="translate(0 13)"/>
+<path d="M112 80 Q130 38 178 42 L286 42 Q335 38 355 80 L405 180 Q425 225 390 250 Q355 273 327 237 L294 200 L169 200 L136 237 Q105 273 72 250 Q38 225 58 180 Z" fill="url(#body)" stroke="#f5fbff" stroke-width="5"/>
+<path d="M130 120 H190 M160 90 V150" stroke="#26364f" stroke-width="14" stroke-linecap="round"/>
+<circle cx="325" cy="112" r="13" fill="#b7ff4a"/><circle cx="358" cy="145" r="13" fill="#55e7ff"/><circle cx="292" cy="145" r="13" fill="#ff6d9a"/><circle cx="325" cy="178" r="13" fill="#ffd66b"/>
+<rect x="207" y="110" width="47" height="23" rx="11" fill="#60728c"/><rect x="207" y="145" width="47" height="23" rx="11" fill="#60728c"/>
+<path d="M180 65 Q220 50 270 65" stroke="#fff" opacity=".65" stroke-width="5" fill="none" stroke-linecap="round"/>
+</g>
+<g fill="#b7ff4a"><path d="M85 105 l8 18 18 8 -18 8 -8 18 -8 -18 -18 -8 18 -8z"/><circle cx="490" cy="280" r="6"/><circle cx="120" cy="290" r="4"/></g>
+<g fill="#55e7ff"><path d="M480 80 l7 15 15 7 -15 7 -7 15 -7 -15 -15 -7 15 -7z"/><circle cx="435" cy="350" r="5"/></g>
+</svg>
+<div class="float-chip chip-one">⚡ READY PLAYER ONE</div><div class="float-chip chip-two">🎮 GAME ON</div>
+</div>
+</section>
+
+<div class="ad">Advertisement space · Ad placements can be connected after approval from an advertising provider.</div>
+
+<section class="section" id="games">
+<div class="section-head"><div><div class="kicker">Find your game</div><h2>Choose your battlefield</h2><p class="sub">A little something for every kind of player.</p></div></div>
+<div class="game-grid">
+<article class="game-card"><div class="art"><svg viewBox="0 0 400 190" aria-label="Futuristic action game artwork"><defs><linearGradient id="a1"><stop stop-color="#301b65"/><stop offset="1" stop-color="#e14b72"/></linearGradient></defs><rect width="400" height="190" fill="url(#a1)"/><circle cx="300" cy="60" r="65" fill="#ff9b70" opacity=".45"/><path d="M0 160 L90 90 150 150 230 55 400 170 V190 H0" fill="#10172e" opacity=".8"/><path d="M160 190 L185 100 210 75 235 100 260 190" fill="#0a1020"/><path d="M197 90 l-25 35 20 -5 -10 35 42 -50 -22 5 15 -20z" fill="#b7ff4a"/></svg></div><div class="card-body"><span class="tag">ACTION</span><h3>Action & Shooting</h3><p>Quick reflexes, bold moves and intense missions.</p><div class="card-foot"><span class="rating">★ 4.9 style</span><a class="play-link" href="#tapgame">Play demo →</a></div></div></article>
+<article class="game-card"><div class="art"><svg viewBox="0 0 400 190" aria-label="Neon racing car artwork"><defs><linearGradient id="a2"><stop stop-color="#063c57"/><stop offset="1" stop-color="#1c1b54"/></linearGradient></defs><rect width="400" height="190" fill="url(#a2)"/><path d="M0 150 L400 75 M0 180 L400 105" stroke="#55e7ff" stroke-width="3" opacity=".6"/><path d="M70 190 L180 35 230 35 140 190" fill="#0a1327"/><path d="M245 190 L320 35 350 35 290 190" fill="#0a1327"/><path d="M95 130 Q130 92 190 105 L270 120 300 145 280 160 H105Z" fill="#ff4d79" stroke="#fff" stroke-width="3"/><path d="M155 105 L185 80 H235 L260 115Z" fill="#9eeaff"/><circle cx="145" cy="158" r="19" fill="#080d18" stroke="#b7ff4a" stroke-width="6"/><circle cx="260" cy="158" r="19" fill="#080d18" stroke="#b7ff4a" stroke-width="6"/></svg></div><div class="card-body"><span class="tag">RACING</span><h3>Street Racing</h3><p>Hit the accelerator and chase the finish line.</p><div class="card-foot"><span class="rating">⚡ Speed zone</span><a class="play-link" href="#tapgame">Play demo →</a></div></div></article>
+<article class="game-card"><div class="art"><svg viewBox="0 0 400 190" aria-label="Football stadium artwork"><defs><linearGradient id="a3"><stop stop-color="#075c50"/><stop offset="1" stop-color="#142d5c"/></linearGradient></defs><rect width="400" height="190" fill="url(#a3)"/><path d="M0 30 Q200 -20 400 30 V190 H0Z" fill="#b7ff4a" opacity=".12"/><path d="M35 190 V65 H365 V190" fill="none" stroke="#d7ffe0" stroke-width="3" opacity=".7"/><path d="M200 65 V190 M35 130 H365" stroke="#d7ffe0" stroke-width="2" opacity=".6"/><circle cx="200" cy="130" r="38" fill="none" stroke="#d7ffe0" stroke-width="2"/><circle cx="270" cy="102" r="20" fill="#fff" stroke="#18243c" stroke-width="3"/><path d="M260 91 l10 -4 9 8 -3 12 -12 4 -8 -9z" fill="#17233b"/><path d="M0 0 L400 0" stroke="#b7ff4a" stroke-width="8"/></svg></div><div class="card-body"><span class="tag">SPORTS</span><h3>Football & Sports</h3><p>Bring your team spirit and compete for glory.</p><div class="card-foot"><span class="rating">🏆 Game day</span><a class="play-link" href="#tapgame">Play demo →</a></div></div></article>
+<article class="game-card"><div class="art"><svg viewBox="0 0 400 190" aria-label="Colourful puzzle artwork"><defs><linearGradient id="a4"><stop stop-color="#2b195f"/><stop offset="1" stop-color="#087a83"/></linearGradient></defs><rect width="400" height="190" fill="url(#a4)"/><g transform="translate(110 25)"><rect x="0" y="0" width="65" height="65" rx="12" fill="#b7ff4a"/><rect x="76" y="0" width="65" height="65" rx="12" fill="#ff6d9a"/><rect x="152" y="0" width="65" height="65" rx="12" fill="#55e7ff"/><rect x="0" y="76" width="65" height="65" rx="12" fill="#ffd66b"/><rect x="76" y="76" width="65" height="65" rx="12" fill="#9c83ff"/><rect x="152" y="76" width="65" height="65" rx="12" fill="#b7ff4a"/><g fill="#10172a" opacity=".7"><circle cx="32" cy="32" r="12"/><path d="M92 15 h34 v34 h-34z"/><path d="M170 18 l30 30 h-30z"/><path d="M15 92 l35 35 M50 92 l-35 35"/></g></g></svg></div><div class="card-body"><span class="tag">PUZZLE</span><h3>Brain Puzzles</h3><p>Think smart, solve patterns and beat each level.</p><div class="card-foot"><span class="rating">🧠 Think fast</span><a class="play-link" href="#tapgame">Play demo →</a></div></div></article>
+<article class="game-card"><div class="art"><svg viewBox="0 0 400 190" aria-label="Fantasy adventure landscape"><defs><linearGradient id="a5"><stop stop-color="#102e5c"/><stop offset="1" stop-color="#713c8b"/></linearGradient></defs><rect width="400" height="190" fill="url(#a5)"/><circle cx="290" cy="52" r="34" fill="#ffd66b" opacity=".9"/><path d="M0 150 L95 45 170 150 245 65 400 170 V190 H0" fill="#111c37"/><path d="M0 175 L110 105 185 175 290 110 400 180 V190 H0" fill="#203c54"/><path d="M190 190 L210 125 230 190" fill="#b7ff4a" opacity=".65"/><g fill="#fff"><circle cx="65" cy="30" r="2"/><circle cx="145" cy="48" r="2"/><circle cx="350" cy="25" r="2"/></g></svg></div><div class="card-body"><span class="tag">ADVENTURE</span><h3>Adventure Worlds</h3><p>Explore mysterious places and uncover new quests.</p><div class="card-foot"><span class="rating">🌌 Explore</span><a class="play-link" href="#tapgame">Play demo →</a></div></div></article>
+<article class="game-card"><div class="art"><svg viewBox="0 0 400 190" aria-label="Retro arcade pixel artwork"><rect width="400" height="190" fill="#17113d"/><path d="M0 145 H400" stroke="#55e7ff" stroke-width="2" opacity=".6"/><path d="M200 0 L0 190 M200 0 L400 190 M0 70 H400 M0 110 H400" stroke="#8a5cff" stroke-width="1" opacity=".35"/><g transform="translate(145 32)" fill="#b7ff4a"><rect x="0" y="0" width="28" height="14"/><rect x="42" y="0" width="28" height="14"/><rect x="84" y="0" width="28" height="14"/><rect x="-20" y="25" width="28" height="14"/><rect x="22" y="25" width="28" height="14"/><rect x="64" y="25" width="28" height="14"/><rect x="106" y="25" width="28" height="14"/></g><path d="M180 145 l20 -35 20 35z" fill="#ff6d9a" stroke="#fff" stroke-width="2"/><circle cx="95" cy="95" r="10" fill="#55e7ff"/><circle cx="305" cy="80" r="7" fill="#ffd66b"/></svg></div><div class="card-body"><span class="tag">ARCADE</span><h3>Retro Arcade</h3><p>Classic-inspired fun with quick rounds and big energy.</p><div class="card-foot"><span class="rating">🕹️ Classic fun</span><a class="play-link" href="#tapgame">Play demo →</a></div></div></article>
+</div>
+</section>
+
+<section class="section" id="tapgame">
+<div class="panel"><div class="section-head"><div><div class="kicker">Play right here</div><h2>Tap Rush Challenge</h2><p class="sub">How many taps can you score in 10 seconds?</p></div><span class="tag">FREE MINI GAME</span></div>
+<div class="mini-wrap"><div class="small">TIME LEFT</div><div id="time" style="font-size:1.5rem;font-weight:900">10</div><div id="score">0</div><button id="tapButton" disabled type="button">TAP!</button><p id="message" class="small" aria-live="polite">Press Start Challenge to begin.</p><button class="btn" id="startButton" type="button">Start challenge ↗</button></div>
+</div>
+</section>
+
+<section class="section" id="about"><div class="panel"><div class="kicker">The GameZone vision</div><h2>More than just games.</h2><p class="lead">GameZone is growing into a home for game discovery, challenges and player community. Premium memberships, advertising and affiliate recommendations can be added after the required services and approvals are in place.</p><p class="small">This is an early demo: category cards are illustrated previews and link to the Tap Rush mini-game. Separate full games, user accounts, payments, advertisements and affiliate tracking are not active yet.</p></div></section>
+</main>
+<footer><div class="wrap">© <span id="year"></span> GameZone · Play responsibly · Made for gamers.</div></footer>
+<script>
+document.getElementById('year').textContent=new Date().getFullYear();
+let score=0,timeLeft=10,timer=null,playing=false;
+const scoreEl=document.getElementById('score'),timeEl=document.getElementById('time'),messageEl=document.getElementById('message'),tapButton=document.getElementById('tapButton'),startButton=document.getElementById('startButton');
+function finish(){playing=false;clearInterval(timer);tapButton.disabled=true;startButton.disabled=false;messageEl.textContent=`Time's up! You scored ${score} taps. Try again and beat your record!`;}
+startButton.addEventListener('click',()=>{clearInterval(timer);score=0;timeLeft=10;playing=true;scoreEl.textContent=score;timeEl.textContent=timeLeft;messageEl.textContent='GO! Tap as fast as you can!';tapButton.disabled=false;startButton.disabled=true;timer=setInterval(()=>{timeLeft--;timeEl.textContent=timeLeft;if(timeLeft<=0)finish();},1000);});
+tapButton.addEventListener('click',()=>{if(playing){score++;scoreEl.textContent=score;}});
+</script>
+</body></html>
